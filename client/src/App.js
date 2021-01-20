@@ -10,7 +10,7 @@ function App() {
 	const fileHandler = (e) => {
 		console.log(e.target.files[0].name);
 		setState({ ...state, file: e.target.files[0] });
-		document.getElementById('h1').innerHTML = e.target.files[0].name;
+		document.getElementById('h1').textContent = e.target.files[0].name;
 	};
 	const fileUploader = () => {
 		const formData = new FormData();
