@@ -26,10 +26,8 @@ app.post('/file', async (req, res) => {
 			.then((data) => {
 				const base64Data = data.toString('base64');
 
-				// const blobData = `data:${contentType};base64,${base64Data}`
-
 				res.status(202).json({ b64Data: base64Data, contentType: contentType, extension: 'png' });
-				// res.send(base64Data)
+				res.send(base64Data)
 			})
 			.catch((err) => console.log(err));
 	});
