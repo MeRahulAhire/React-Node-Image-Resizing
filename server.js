@@ -18,19 +18,17 @@ app.post('/file', async (req, res) => {
 			return;
 		}
 		const imageInput = files.image.path;
-		const fileName = files.image.name;
 		const contentType = files.image.type;
-		sharp(imageInput)
+		 await sharp(imageInput)
 			.resize(512, 512)
 			.png()
 			.toBuffer()
 			.then((data) => {
-				
 				const base64Data = data.toString('base64');
 
 				// const blobData = `data:${contentType};base64,${base64Data}`
 
-				res.status(202).json({ b64Data: base64Data, contentType: contentType});
+				res.status(202).json({ b64Data: base64Data, contentType: contentType, extension: 'png' });
 				// res.send(base64Data)
 			})
 			.catch((err) => console.log(err));
